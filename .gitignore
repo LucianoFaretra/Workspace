@@ -27,3 +27,16 @@
 *.i*86
 *.x86_64
 *.hex
+
+# ignore all bin directories
+# matches "bin" in any subfolder
+bin/
+
+# ignore all target directories
+target/
+
+# ignore all files ending with ~
+*~
+
+.metadata
+*.directory
