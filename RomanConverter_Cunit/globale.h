@@ -17,7 +17,7 @@
 /** \def MAX_CONVERTIBILE
  * Numero decimale più grande convertibile in Romano semplice
  */
-#define MAX_CONVERTIBILE 4900
+#define MAX_CONVERTIBILE 4999
 
 /** \def MIN_CONVERTIBILE
  * Numero decimale più piccolo convertibile in Romano semplice

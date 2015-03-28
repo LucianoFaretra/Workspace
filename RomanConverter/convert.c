@@ -5,6 +5,92 @@
  * \date 2015
  */
 
+/**
+ * INPUT									DESCRIZIONE											DOMINIO
+ * numero									Numero decimale da converitre in romano				0 < numero < 5000
+ *
+ * OUTPUT									DESCRIZIONE											DOMINIO
+ * numero_romano							Struttura contenente l'array numero					Struttura dati
+ * .numero[ESTENSIONE_MAX_NUMERO_ROMANO]	Array contenuto nella struttura numero_romano
+ * 											contenente il numero convertito in romano semolice	Stringa di caratteri
+ *
+ * 	DATI DI LAVORO							DESCRIZIONE											DOMINIO
+ * 	ESTENSIONE_MAX_NUMERO_ROMANO			Estensione massima in lettere del numero romano		> 0
+ *	MAX_CONVERTIBILE						Numero decimale massimo convertibile in romano		4999
+ *	MIN_CONVERTIBILE						Numero decimale piu piccolo converitibile in romano	1
+ *
+ *
+ *	Funzione Convert:
+ *
+ *	Se il numero rispetta i voncoli
+ *		Allora
+ *			Esegui
+ *				Se il numero e' maggiore o uguale di 1000
+ *					Allora
+ *						chiama la funzione di conversione delle migliaia in romano
+ *						chiama la funzione di conversione delle cinquecentine in romano
+ *						chiama la funzione di conversione delle centinaia in romano
+ *						chiama la funzione di conversione delle cinquantine in romano
+ *						chiama la funzione di conversione delle decine in romano
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 500
+ *						chiama la funzione di conversione delle cinquecentine in romano
+ *						chiama la funzione di conversione delle centinaia in romano
+ *						chiama la funzione di conversione delle cinquantine in romano
+ *						chiama la funzione di conversione delle decine in romano
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 100
+ *						chiama la funzione di conversione delle centinaia in romano
+ *						chiama la funzione di conversione delle cinquantine in romano
+ *						chiama la funzione di conversione delle decine in romano
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 50
+ *						chiama la funzione di conversione delle cinquantine in romano
+ *						chiama la funzione di conversione delle decine in romano
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 10
+ *						chiama la funzione di conversione delle decine in romano
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 5
+ *						chiama la funzione di conversione delle cinquine in romano
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti Se il numero e' maggiore o uguale di 1
+ *						chiama la funzione di conversione delle unita' in romano
+ *					Altrimenti
+ *						porta il contatore_stringa a fine stringa in modo da uscire dal ciclo
+ *				Fine
+ *			Finche' il contatore_stringa non ha raggiunto ESTENSIONE_MAX_NUMERO_ROMANO
+ *		Fine
+ *	restituisci numero_romano
+ *
+ *	Prototipo generico funzione di conversione unita numerica:
+ *
+ *	INPUT									DESCRIZIONE											DOMINIO
+ * 	*numero									Indirizzo Numero decimale da converitre in romano	0 < numero < limite funzione
+ * 	*numero_romano							indirizzo Struttura contenente l'array numero		Struttura dati
+ * 	->numero[ESTENSIONE_MAX_NUMERO_ROMANO]	Array contenuto nella struttura numero_romano
+ * 	unita									Unita' che s'intende elaborare						> 0 <= 1000
+ * 	simbolo									Sibolo corrispettivo all'unita in romano			char
+ * 	*contatore_stringa						Contatore per scorrere l'array passato x indirizzo	>= 0 <= ESTENSIONE_MAX_NUMERO_ROMANO
+ *
+ * 	OUTPUT									DESCRIZIONE											DOMINIO
+ *
+ * 	DATI DI LAVORO							DESCRIZIONE											DOMINIO
+ * 	ESTENSIONE_MAX_NUMERO_ROMANO			Estensione massima in lettere del numero romano		> 0
+ *
+ * 	Mentre il *numero e' >= unita
+ * 		sottrai dal numero unita
+ * 		*numero_romano->numero[ESTENSIONE_MAX_NUMERO_ROMANO] = simbolo
+ * 		incrementa *contatore_stringa di 1
+ * 	Fine
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "convert.h"
@@ -29,125 +115,73 @@ string convert(int numero)
 	 */
 	unsigned int contatore_stringa = 0;
 
-	if( ( numero <= MAX_CONVERTIBILE ) && ( numero >= MIN_CONVERTIBILE  ) ){
+	if( ( numero <= MAX_CONVERTIBILE ) && ( numero >= MIN_CONVERTIBILE  ) ){ //Se il numero rispetta i vincoli esegui
 		do{//Esegui
-			if( numero >= 1000 ){
-				convert_1000( &numero, &numero_romano, &contatore_stringa);
-				convert_500(&numero, &numero_romano, &contatore_stringa);
-				convert_100(&numero, &numero_romano, &contatore_stringa);
-				convert_50(&numero, &numero_romano, &contatore_stringa);
-				convert_10(&numero, &numero_romano, &contatore_stringa);
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			if( numero >= 1000 ){//Se il numero e' maggiore o uguale di 1000 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1000, 'M');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 500, 'D');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 500 ){
-				convert_500(&numero, &numero_romano, &contatore_stringa);
-				convert_100(&numero, &numero_romano, &contatore_stringa);
-				convert_50(&numero, &numero_romano, &contatore_stringa);
-				convert_10(&numero, &numero_romano, &contatore_stringa);
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 500 ){//Altrimenti se e' maggiore o uguale a 500 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 500, 'D');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 100 ){
-				convert_100(&numero, &numero_romano, &contatore_stringa);
-				convert_50(&numero, &numero_romano, &contatore_stringa);
-				convert_10(&numero, &numero_romano, &contatore_stringa);
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 100 ){//Altrimenti se e' maggiore o uguale a 100 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 50 ){
-				convert_50(&numero, &numero_romano, &contatore_stringa);
-				convert_10(&numero, &numero_romano, &contatore_stringa);
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 50 ){//Altrimenti se e' maggiore o uguale a 50 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 10 ){
-				convert_10(&numero, &numero_romano, &contatore_stringa);
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 10 ){//Altrimenti se e' maggiore o uguale a 10 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 5 ){
-				convert_5(&numero, &numero_romano, &contatore_stringa);
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 5 ){//Altrimenti se e' maggiore o uguale a 5 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 1 ){
-				convert_1(&numero, &numero_romano, &contatore_stringa);
+			else if( numero >= 1 ){//Altrimenti se e' maggiore o uguale a 1 esegui le seguenti funzioni
+				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
 			else{//Esegui se il numero e' 0
-				contatore_stringa = ESTENSIONE_MAX_NUMERO_ROMANO;//Incrementa il contatore dell'arrai di uno
+				contatore_stringa = ESTENSIONE_MAX_NUMERO_ROMANO;//Incrementa il contatore del vettore in modo da uscire dal ciclo
 			}
-		}while(contatore_stringa != ESTENSIONE_MAX_NUMERO_ROMANO);
-	}
+		}while(contatore_stringa != ESTENSIONE_MAX_NUMERO_ROMANO);//Fnche' il contatore_stringa e' diverso dall'ESTENSIONE_MAX_NUMERO_ROMANO
+	}//Altrimenti restituisci la stringa vuota
 
 return numero_romano;//Ritorna una struttura contenente una stringa di caratteri
 }
 
-void convert_1000(int* numero, string* numero_romano, unsigned int* contatore_stringa)
+/** \fn void convert_unita ( int* numero, string* numero_romano, unsigned int* contatore_stringa, int unita, char simbolo )
+ * La funzione converte un numero decimale in romano semplice
+ * \param *numero indirizzo della variabile contenente il numero da convertire
+ * \param *numero_romano indirizzo della struttura contenente la stringa dove salvare il numero romano convertito
+ * \param *contatore_stringa indirizzo della variabile contenente il contatore utilizzato per scorrere l'array
+ * \param unita unita' da operare
+ * \param simbolo simbolo da inserire nell'array relativo a questa unita'
+ */
+void convert_unita(int* numero, string* numero_romano, unsigned int* contatore_stringa, int unita, char simbolo)
 {
-	while(*numero >= 1000){
-		*numero -= 1000;
-		numero_romano->numero[*contatore_stringa] = 'M';//Assegna all'array nella posizione contatore_stringa il valore 'H'
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_500(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 500){
-		*numero -= 500;
-		numero_romano->numero[*contatore_stringa] = 'D';
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_100(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 100 ){
-		*numero -= 100;
-		numero_romano->numero[*contatore_stringa] = 'C';
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_50(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 50 ){
-		*numero -= 50;
-		numero_romano->numero[*contatore_stringa] = 'L';
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_10(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 10 ){
-		*numero -= 10;
-		numero_romano->numero[*contatore_stringa] = 'X';
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_5(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 5 ){
-		*numero -= 5;
-		numero_romano->numero[ *contatore_stringa] = 'V';
-		*contatore_stringa += 1;
-	};
-return;
-}
-
-void convert_1(int* numero, string* numero_romano, unsigned int* contatore_stringa)
-{
-	while( *numero >= 1){
-		*numero -= 1;
-		numero_romano->numero[*contatore_stringa] = 'I';
-		*contatore_stringa += 1;
+	while(*numero >= unita){ //Mentre numero >= di unita'
+		*numero -= unita; //Sottrai unita' al numero
+		numero_romano->numero[*contatore_stringa] = simbolo; //Assegna all'array nella posizione contatore_stringa il valore romano
+		*contatore_stringa += 1; //Incrementa il contatore della stringa di uno
 	};
 return;
 }

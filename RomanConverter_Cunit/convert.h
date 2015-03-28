@@ -10,12 +10,5 @@
 #include "globale.h"
 
 string convert(int numero);
-void convert_1000(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_500(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_100(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_50(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_10(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_5(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-void convert_1(int* numero, string* numero_romano, unsigned int* contatore_stringa);
-
+void convert_unita(int* numero, string* numero_romano, unsigned int* contatore_stringa, int unita, char simbolo);
 #endif /* CONVERT_H_ */

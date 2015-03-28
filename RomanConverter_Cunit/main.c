@@ -37,6 +37,8 @@ void test_convert (void) {
 	 */
 	string struttura_comparativa_di_test = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
 
+	size_t contatore_stringa = 0;
+
 	/**
 	 * Test Case 1: Caso limite-> Input numero 0
 	 */
@@ -64,13 +66,15 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(69);
 
-		struttura_comparativa_di_test.numero[0] = 'L';
-		struttura_comparativa_di_test.numero[1] = 'X';
-		struttura_comparativa_di_test.numero[2] = 'V';
-		struttura_comparativa_di_test.numero[3] = 'I';
-		struttura_comparativa_di_test.numero[4] = 'I';
-		struttura_comparativa_di_test.numero[5] = 'I';
-		struttura_comparativa_di_test.numero[6] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'L';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'V';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+
+		contatore_stringa = 0; //Azzera contatore
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -84,7 +88,7 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(1);
 
-		struttura_comparativa_di_test.numero[0] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'I';
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -98,7 +102,7 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(5);
 
-		struttura_comparativa_di_test.numero[0] = 'V';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'V';
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -112,7 +116,7 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(10);
 
-		struttura_comparativa_di_test.numero[0] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'X';
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -126,7 +130,7 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(50);
 
-		struttura_comparativa_di_test.numero[0] = 'L';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'L';
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -182,10 +186,12 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(4);
 
-		struttura_comparativa_di_test.numero[0] = 'I';
-		struttura_comparativa_di_test.numero[1] = 'I';
-		struttura_comparativa_di_test.numero[2] = 'I';
-		struttura_comparativa_di_test.numero[3] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+
+		contatore_stringa = 0; //Azzera contatore
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -199,11 +205,13 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(9);
 
-		struttura_comparativa_di_test.numero[0] = 'V';
-		struttura_comparativa_di_test.numero[1] = 'I';
-		struttura_comparativa_di_test.numero[2] = 'I';
-		struttura_comparativa_di_test.numero[3] = 'I';
-		struttura_comparativa_di_test.numero[4] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'V';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+
+		contatore_stringa = 0; //Azzera contatore
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -217,11 +225,13 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(14);
 
-		struttura_comparativa_di_test.numero[0] = 'X';
-		struttura_comparativa_di_test.numero[1] = 'I';
-		struttura_comparativa_di_test.numero[2] = 'I';
-		struttura_comparativa_di_test.numero[3] = 'I';
-		struttura_comparativa_di_test.numero[4] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+
+		contatore_stringa = 0; //Azzera contatore
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -235,12 +245,46 @@ void test_convert (void) {
 	 */
 	struttura_contenente_numero_romano = convert(19);
 
-		struttura_comparativa_di_test.numero[0] = 'X';
-		struttura_comparativa_di_test.numero[1] = 'V';
-		struttura_comparativa_di_test.numero[2] = 'I';
-		struttura_comparativa_di_test.numero[3] = 'I';
-		struttura_comparativa_di_test.numero[4] = 'I';
-		struttura_comparativa_di_test.numero[5] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'V';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+
+		contatore_stringa = 0; //Azzera indice
+
+	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
+							struttura_comparativa_di_test.numero );
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
+
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
+
+	/**
+	 * Test Case 15: Caso sublimite -> Input numero 4999
+	 */
+	struttura_contenente_numero_romano = convert(4999);
+
+		struttura_comparativa_di_test.numero[contatore_stringa] = 'M';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'M';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'M';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'M';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'D';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'C';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'C';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'C';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'C';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'L';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'X';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'V';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
+		struttura_comparativa_di_test.numero[contatore_stringa += 1] = 'I';
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
