@@ -25,7 +25,7 @@
  *	Se il numero rispetta i voncoli
  *		Allora
  *			Esegui
- *				Se il numero e' maggiore o uguale di 1000
+ *				Se il numero e' maggiore di MIN_CONVERTIBILE
  *					Allora
  *						chiama la funzione di conversione delle migliaia in romano
  *						chiama la funzione di conversione delle cinquecentine in romano
@@ -33,33 +33,6 @@
  *						chiama la funzione di conversione delle cinquantine in romano
  *						chiama la funzione di conversione delle decine in romano
  *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 500
- *						chiama la funzione di conversione delle cinquecentine in romano
- *						chiama la funzione di conversione delle centinaia in romano
- *						chiama la funzione di conversione delle cinquantine in romano
- *						chiama la funzione di conversione delle decine in romano
- *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 100
- *						chiama la funzione di conversione delle centinaia in romano
- *						chiama la funzione di conversione delle cinquantine in romano
- *						chiama la funzione di conversione delle decine in romano
- *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 50
- *						chiama la funzione di conversione delle cinquantine in romano
- *						chiama la funzione di conversione delle decine in romano
- *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 10
- *						chiama la funzione di conversione delle decine in romano
- *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 5
- *						chiama la funzione di conversione delle cinquine in romano
- *						chiama la funzione di conversione delle unita' in romano
- *					Altrimenti Se il numero e' maggiore o uguale di 1
  *						chiama la funzione di conversione delle unita' in romano
  *					Altrimenti
  *						porta il contatore_stringa a fine stringa in modo da uscire dal ciclo
@@ -117,7 +90,7 @@ string convert(int numero)
 
 	if( ( numero <= MAX_CONVERTIBILE ) && ( numero >= MIN_CONVERTIBILE  ) ){ //Se il numero rispetta i vincoli esegui
 		do{//Esegui
-			if( numero >= 1000 ){//Se il numero e' maggiore o uguale di 1000 esegui le seguenti funzioni
+			if( numero >= MIN_CONVERTIBILE ){
 				convert_unita( &numero, &numero_romano, &contatore_stringa, 1000, 'M');
 				convert_unita( &numero, &numero_romano, &contatore_stringa, 500, 'D');
 				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
@@ -126,40 +99,7 @@ string convert(int numero)
 				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
 				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
 			}
-			else if( numero >= 500 ){//Altrimenti se e' maggiore o uguale a 500 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 500, 'D');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else if( numero >= 100 ){//Altrimenti se e' maggiore o uguale a 100 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 100, 'C');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else if( numero >= 50 ){//Altrimenti se e' maggiore o uguale a 50 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 50, 'L');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else if( numero >= 10 ){//Altrimenti se e' maggiore o uguale a 10 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 10, 'X');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else if( numero >= 5 ){//Altrimenti se e' maggiore o uguale a 5 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 5, 'V');
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else if( numero >= 1 ){//Altrimenti se e' maggiore o uguale a 1 esegui le seguenti funzioni
-				convert_unita( &numero, &numero_romano, &contatore_stringa, 1, 'I');
-			}
-			else{//Esegui se il numero e' 0
+			else{//Esegui se il numero e' < di MIN_CONVERTIBILE
 				contatore_stringa = ESTENSIONE_MAX_NUMERO_ROMANO;//Incrementa il contatore del vettore in modo da uscire dal ciclo
 			}
 		}while(contatore_stringa != ESTENSIONE_MAX_NUMERO_ROMANO);//Fnche' il contatore_stringa e' diverso dall'ESTENSIONE_MAX_NUMERO_ROMANO
