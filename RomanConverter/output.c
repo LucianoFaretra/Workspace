@@ -21,7 +21,7 @@ void stampa(string numero_romano, int numero_decimale)
 		printf("Il numero decimale \"%d\" equivale a \"%s\" in romano semplificato.", numero_decimale, numero_romano.numero);
 	else //Altrimenti stampa messaggio d'errore
 		puts("Errore nella conversione del numero da decimale a romano.\n"
-			"Sono accettati solo numeri interi compresi tra 0 e 5000 estremi esclusi.");
+			"Sono accettati solo numeri interi compresi tra 1 e 4999 ivi esclusi.");
 
 return;
 }

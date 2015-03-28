@@ -1,5 +1,5 @@
 /**\file main.c
- * \brief File main contenente le chiamate a funzioni
+ * \brief File main contenente i casi di test
  * \section License
  * Rilasciato sotto licenza GNUv3
  * \author Luciano Faretra
@@ -15,13 +15,26 @@
 #include "convert.h"
 #include "CUnit/Basic.h"
 
-void pulitura_strutture(string* dirty_data);
+/**
+ * Prototipo funzione pulitura_strutture
+ */
+void pulitura_strutture(string* dirty_data, unsigned int grandezza);
 
 /**
  * Aggiungere tutti i metodi di test per le funzioni da testare
  */
 void test_convert (void) {
+
+	/**
+	 * \var struttura_contenente_numero_romano
+	 * Struttura contenente il numero romano convetito dalla funzione convert, viene inizializzata vuota
+	 */
 	string struttura_contenente_numero_romano = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
+
+	/**
+	 * \vat struttura_comparativa_di_test
+	 * Struttura creata ad hoc per testare il caso voluto viene inizializzata vuota
+	 */
 	string struttura_comparativa_di_test = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
 
 	/**
@@ -30,10 +43,10 @@ void test_convert (void) {
 	struttura_contenente_numero_romano = convert(0);
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO, info per debugging, contenuto finale \0
+	//Il test confronta le due stringhe e deve avere esito POSITIVO, info per debugging, contenuto finale \0
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO; //Pulisce struttura_contenente_numero_romano
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST; //Pulisce struttura_comparativa_di_test
 
 	/**
 	 * Test Case 2: Caso limite -> Input numero 5000
@@ -41,10 +54,10 @@ void test_convert (void) {
 	struttura_contenente_numero_romano = convert(5000);
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO, info per debugging, contenuto finale \0
+	//Il test confronta le due stringhe e deve avere esito POSITIVO, info per debugging, contenuto finale \0
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 3: Numero random -> Input numero 69
@@ -61,10 +74,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 4: test unita' -> Input numero 1
@@ -75,10 +88,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 5: Numero cinquine -> Input numero 5
@@ -89,10 +102,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 6: Numero decine -> Input numero 10
@@ -103,10 +116,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 7: Numero cinquantine -> Input numero 50
@@ -117,10 +130,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 8: Numero centinaia -> Input numero 100
@@ -131,10 +144,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 9: Numero cinquecentine -> Input numero 500
@@ -145,10 +158,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 10: Numero migliaia -> Input numero 1000
@@ -159,10 +172,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 11: Caso tipico -> Input numero 4
@@ -176,10 +189,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 12: Caso tipico -> Input numero 9
@@ -194,10 +207,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 13: Caso tipico -> Input numero 14
@@ -212,10 +225,10 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
-	pulitura_strutture(&struttura_contenente_numero_romano);
-	pulitura_strutture(&struttura_comparativa_di_test);
+	CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO;
+	CLEAN_STRUTTURA_COMPARATIVA_DI_TEST;
 
 	/**
 	 * Test Case 14: Caso tipico -> Input numero 19
@@ -231,7 +244,7 @@ void test_convert (void) {
 
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
-	//Il test deve avere esito POSITIVO
+	//Il test confronta le due stringhe e deve avere esito POSITIVO
 
 }
 
@@ -245,14 +258,19 @@ int init_suite_clean_default(void)
 return 0; //Tutto apposto a ferragosto
 }
 
-void pulitura_strutture(string* dirty_data)
+/**
+ * \fn void pulitura_strutture(string* dirty_data)
+ * La funzione pulisce l'array di dimensione "grandezza" ricevuto in input
+ */
+
+void pulitura_strutture(string* dirty_data, unsigned int grandezza)
 {
 	size_t indice_array = 0;
 
 	do{
 		dirty_data->numero[indice_array] = '\0';
 		indice_array++;
-	}while(indice_array != ESTENSIONE_MAX_NUMERO_ROMANO);
+	}while(indice_array != grandezza);
 
 return;
 }
@@ -271,6 +289,9 @@ int main (void)
 	CU_basic_run_tests();
 
 	CU_cleanup_registry();
+
+	getchar();//Blocca la console fino alla pressione di un tasto
+	getchar();
 
 return CU_get_error();
 }

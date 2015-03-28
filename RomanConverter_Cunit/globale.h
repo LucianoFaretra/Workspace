@@ -24,6 +24,16 @@
  */
 #define MIN_CONVERTIBILE 1
 
+/** \def CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO
+ * Crea un alias per facilitare la comprensione del codice
+ */
+#define CLEAN_STRUTTURA_CONTENENTE_NUMERO_ROMANO pulitura_strutture(&struttura_contenente_numero_romano, ESTENSIONE_MAX_NUMERO_ROMANO)
+
+/** \def CLEAN_STRUTTURA_COMPARATIVA_DI_TEST
+ * Crea un alias per facilitare la comprensione del codice
+ */
+#define CLEAN_STRUTTURA_COMPARATIVA_DI_TEST pulitura_strutture(&struttura_comparativa_di_test, ESTENSIONE_MAX_NUMERO_ROMANO)
+
 /** \typedef char stringa[DIM]
  * 	Crea un alias per il tipo char stringa[DIM]
  * 	Il tipo stringa consiste in una stringa di massimo 20 caratteri
