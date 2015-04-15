@@ -5,9 +5,9 @@
 OBJ_SRCS := 
 ASM_SRCS := 
 C_SRCS := 
-O_SRCS := 
 S_UPPER_SRCS := 
-EXECUTABLES := 
+O_SRCS := 
+LIBRARIES := 
 OBJS := 
 C_DEPS := 
 

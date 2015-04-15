@@ -16,5 +16,6 @@
 typedef char string[LEN_STRINGA];
 
 string stringhe[MAX_STRINGHE];
+int fibonacci[MAX_NUMERI];
 
 #endif /* DATI_GLOBALI_H_ */

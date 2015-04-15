@@ -6,7 +6,6 @@
 
 void FibonacciSearcher(string str[])
 {
-	int fibonacci[MAX_NUMERI] = {0};
 
 	unsigned int indice_array;
 	unsigned int posizione_fibonacci;
@@ -74,19 +73,32 @@ int lookFor(string key)
 {
 	unsigned int n = MAX_STRINGHE;
 	unsigned int m = 0;
-	unsigned int k = m;
+	unsigned int k;
 	unsigned int base = 0;
-	int esito;
+	unsigned int posizione;
+	unsigned int esito;
+	string s;
 
 	while(fibonacci[m] <= n){
 		m++;
 	}
 
-	do{
-		if(k < 0){
-			esito = -1;
-		}
-	}while(contatore_stringhe <= MAX_STRINGHE);
+	k = m;
 
-	return esito;
+	while(k > 0){
+		posizione = (base + fibonacci[--k] );
+		strcpy(s, stringhe[posizione]);
+		if( 0 == strcmp(s, key)){
+			esito = posizione;
+			k = 0;
+		}
+		else if(0 < strcmp(key, s) ){
+			k--;
+		}
+	    else if (0 > strcmp(key, s)){
+	    	base = posizione;
+	        k = ( k - 2);
+	    }
+	}
+    return esito;
 }

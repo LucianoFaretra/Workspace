@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	string stringhe_input[MAX_STRINGHE] = {'\0'};
+	string stringhe_input[MAX_STRINGHE];
 	string key[LEN_STRINGA];
 	unsigned int contatore_numero_stringhe;
 
