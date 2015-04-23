@@ -22,12 +22,19 @@ void FibonacciSearcher(string str[])
 				indice_array = MAX_STRINGHE;
 			}
 			else{
-				if(0 < strcmp(stringhe[indice_array], stringhe[indice_array + 1])){
-					puts("Attenzione le stringhe non sono in ordine lessicografico");
+				if(100 < strlen(stringhe[indice_array])){
+					puts("Attenzione stringa troppo grande");
 					indice_array = MAX_STRINGHE;
 				}
 				else{
-					strcpy(str[indice_array], stringhe[indice_array]);
+					if(0 < strcmp(stringhe[indice_array], stringhe[indice_array + 1])){
+						puts("Attenzione le stringhe non sono in ordine lessicografico");
+						indice_array = MAX_STRINGHE;
+					}
+					else{
+						strcpy(str[indice_array], stringhe[indice_array]);
+						indice_array++;
+					}
 				}
 			}
 		}

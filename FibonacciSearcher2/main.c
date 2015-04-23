@@ -19,12 +19,12 @@ int main(void)
 	contatore_numero_stringhe = 0;
 	do{
 		printf("%d>", contatore_numero_stringhe);
-		lettura_stringa(stringhe_input, contatore_numero_stringhe);
+		lettura_stringhe(stringhe_input, contatore_numero_stringhe);
 		contatore_numero_stringhe++;
 	}while(contatore_numero_stringhe <= STRINGHE_DA_LEGGERE);
 
 	printf("%s", "Per cortesia inserire la key da cercare: ");
-	lettura_stringa(key, 0);
+	lettura_stringa(key);
 
 	FibonacciSearcher(stringhe_input);
 	printf("%d :ciao", lookFor(key));

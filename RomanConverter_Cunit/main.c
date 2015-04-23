@@ -23,24 +23,14 @@ void pulitura_strutture(string* dirty_data, unsigned int grandezza);
 /**
  * Aggiungere tutti i metodi di test per le funzioni da testare
  */
-void test_convert (void) {
+void test_init_world(void) {
 
-	/**
-	 * \var struttura_contenente_numero_romano
-	 * Struttura contenente il numero romano convetito dalla funzione convert, viene inizializzata vuota
-	 */
-	string struttura_contenente_numero_romano = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
-
-	/**
-	 * \vat struttura_comparativa_di_test
-	 * Struttura creata ad hoc per testare il caso voluto viene inizializzata vuota
-	 */
-	string struttura_comparativa_di_test = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
+	int matrice_campo;
 
 	size_t contatore_stringa = 0;
 
 	/**
-	 * Test Case 1: Caso limite-> Input numero 0
+	 * Test Case 1: init_value = 0;
 	 */
 	struttura_contenente_numero_romano = convert(0);
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
