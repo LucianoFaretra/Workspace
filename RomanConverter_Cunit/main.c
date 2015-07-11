@@ -25,9 +25,23 @@ void pulitura_strutture(string* dirty_data, unsigned int grandezza);
  */
 void test_init_world(void) {
 
-	int matrice_campo;
+//	int matrice_campo;
+
+
+	/**
+	 * \var struttura_contenente_numero_romano
+	 * Struttura contenente il numero romano convetito dalla funzione convert, viene inizializzata vuota
+	 */
+	string struttura_contenente_numero_romano = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
+
+	/**
+	 * \vat struttura_comparativa_di_test
+	 * Struttura creata ad hoc per testare il caso voluto viene inizializzata vuota
+	 */
+	string struttura_comparativa_di_test = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
 
 	size_t contatore_stringa = 0;
+
 
 	/**
 	 * Test Case 1: init_value = 0;

@@ -16,25 +16,13 @@
 #include "input.h"
 #include "CUnit/Basic.h"
 
-void test_convert (void) {
+void test_game (void) {
 
 	/**
-	 * \var struttura_contenente_numero_romano
-	 * Struttura contenente il numero romano convetito dalla funzione convert, viene inizializzata vuota
+	 * Test Case 1: Caso limite-> Input numero 0 (numero non valido)
 	 */
-	string struttura_contenente_numero_romano = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
-
-	/**
-	 * \vat struttura_comparativa_di_test
-	 * Struttura creata ad hoc per testare il caso voluto viene inizializzata vuota
-	 */
-	string struttura_comparativa_di_test = {{'\0'}}; //Inizializzazione stringa per rimuovere l'immondizia
-
-	size_t contatore_stringa = 0;
-
-	/**
-	 * Test Case 1: Caso limite-> Input numero 0
-	 */
+	pulitura_array(world);
+	pulitura(world_temp);
 	struttura_contenente_numero_romano = convert(0);
 	CU_ASSERT_STRING_EQUAL( struttura_contenente_numero_romano.numero,
 							struttura_comparativa_di_test.numero );
@@ -58,12 +46,12 @@ void test_convert (void) {
 
 int init_suite_default(void)
 {
-return 0; //Tutto svolto correttamente
+return (0); //Tutto svolto correttamente
 }
 
 int init_suite_clean_default(void)
 {
-return 0; //Tutto apposto a ferragosto
+return (0); //Tutto apposto a ferragosto
 }
 
 /**
@@ -71,26 +59,31 @@ return 0; //Tutto apposto a ferragosto
  * La funzione pulisce l'array di dimensione "grandezza" ricevuto in input
  */
 
-void pulitura_strutture(string* dirty_data, unsigned int grandezza)
+void pulitura_array(int matrice[][MAX_COLONNE])
 {
-	size_t indice_array = 0;
+	size_t indice_righe;
+	size_t indice_colonne;
 
-	do{
-		dirty_data->numero[indice_array] = '\0';
-		indice_array++;
-	}while(indice_array != grandezza);
-
+	indice_righe = 0;
+	while(indice_righe < MAX_RIGHE){
+		indice_colonne = 0;
+		while(indice_colonne < MAX_COLONNE){
+			matrice[indice_righe][indice_colonne] = '\0';
+			indice_colonne++;
+		}
+		indice_righe++;
+	}
 return;
 }
 
-int main (void)
+int main(void)
 {
 	CU_initialize_registry();
 
 	/*Aggiunta di test alla suite registry*/
 	CU_pSuite pSuite_A = CU_add_suite("Suite_A", init_suite_default, init_suite_clean_default);
 
-	CU_add_test(pSuite_A, "test output convert()", test_convert);
+	CU_add_test(pSuite_A, "test output convert()", test_game);
 
 	/*Esegui tutti i casi di test con output sulla console */
 	CU_basic_set_mode(CU_BRM_VERBOSE);
@@ -101,28 +94,4 @@ int main (void)
 	getchar();//Blocca la console fino alla pressione di un tasto
 	getchar();
 
-return CU_get_error();
-}
-
-
-int main(void)
-{
-	unsigned int numero_iterazioni = 0;
-	unsigned int indice_iterazioni = 1;
-
-	printf("Per cortesia inserire il numero di iterazioni da effettuare: \n >: ");
-	lettura_numero(&numero_iterazioni);
-	int_world(INIZIALIZZATORE);
-	campo_pre_partita();
-	puts("Stampa campo iniziale:");
-	display_world();
-	while(indice_iterazioni <= numero_iterazioni){
-		printf("Calcolo iterazione numero %u\n", indice_iterazioni);
-		play_life();
-		copia_dati(world, world_temp);
-		display_world();
-		indice_iterazioni++;
-	}
-
-	return (EXIT_SUCCESS);
 }

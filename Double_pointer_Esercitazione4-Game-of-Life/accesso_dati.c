@@ -49,7 +49,7 @@ void scrittura(int matrice[][MAX_COLONNE], size_t indice_righe, size_t indice_co
  * \param matrice_destinazione[][[MAX_COLONNE] array in cui incollare i dati
  * \param matrice_origine[][[MAX_COLONNE] array da cui prelevare i dati da copiate
  */
-void copia_dati(int matrice_destinazione[][MAX_COLONNE], int matrice_origine[][MAX_COLONNE])
+void copia_dati(int matrice_destinazione[][MAX_COLONNE], matrice_origine[][MAX_COLONNE])
 {
 	size_t indice_righe;
 	size_t indice_colonne;

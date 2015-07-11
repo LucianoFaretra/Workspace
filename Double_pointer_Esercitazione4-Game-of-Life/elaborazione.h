@@ -16,6 +16,5 @@ void play_life(void);
 int caselle_adiacenti_positive(size_t indice_righe, size_t indice_colonne);
 int nuovo_stato(size_t indice_righe, size_t indice_colonne);
 void campo_pre_partita(void);
-void copia_dati(int matrice_destinazione[][MAX_COLONNE], int matrice_origine[][MAX_COLONNE]);
 
 #endif /* ELABORAZIONE_H_ */

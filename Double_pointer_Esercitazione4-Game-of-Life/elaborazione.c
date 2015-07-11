@@ -98,8 +98,6 @@ int caselle_adiacenti_positive(size_t indice_righe, size_t indice_colonne)
 	int indice_sub_colonne;
 	int indice_temp_righe;
 	int indice_temp_colonne;
-	int indice_temp_overflow_righe;
-	int indice_temp_overflow_colonne;
 	unsigned int contatore_caselle;
 
 	contatore_caselle = 0;
@@ -108,50 +106,8 @@ int caselle_adiacenti_positive(size_t indice_righe, size_t indice_colonne)
 		indice_sub_colonne = -1;
 		while(indice_sub_colonne < 2){
 			if((indice_sub_righe != 0) || (indice_sub_colonne != 0)){
-
-				indice_temp_righe = ( indice_righe + indice_sub_righe );
-				indice_temp_colonne = ( indice_colonne + indice_sub_colonne );
-
-				if((indice_temp_righe == MAX_RIGHE) && (indice_temp_colonne == MAX_RIGHE)){
-					indice_temp_overflow_righe = ( indice_temp_righe - MAX_RIGHE );
-					indice_temp_overflow_colonne = (indice_temp_colonne - MAX_COLONNE);
-					if(1 == lettura(world, indice_temp_overflow_righe, indice_temp_overflow_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe == MAX_RIGHE ) && (indice_temp_colonne < MAX_COLONNE)){
-					indice_temp_overflow_righe = ( indice_temp_righe - MAX_RIGHE);
-					if(1 == lettura(world, indice_temp_overflow_righe, indice_temp_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe < MAX_RIGHE) && (indice_temp_colonne == MAX_COLONNE)){
-					indice_temp_overflow_colonne = ( indice_temp_colonne - MAX_COLONNE );
-					if(1 == lettura(world, indice_temp_righe, indice_temp_overflow_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe >= 0) && (indice_temp_colonne >= 0)){
+				if(((indice_temp_righe = indice_righe + indice_sub_righe) >= 0) && ((indice_temp_colonne = indice_colonne + indice_sub_colonne) >= 0)){
 					if(1 == lettura(world, indice_temp_righe, indice_temp_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe < 0) && (indice_temp_colonne < 0)){
-					indice_temp_overflow_righe = (MAX_RIGHE + indice_temp_righe);
-					indice_temp_overflow_colonne = (MAX_COLONNE + indice_temp_colonne);
-					if(1 == lettura(world, indice_temp_overflow_righe, indice_temp_overflow_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe < 0) && (indice_temp_colonne >= 0)){
-					indice_temp_overflow_righe = (MAX_RIGHE + indice_temp_righe);
-					if(1 == lettura(world, indice_temp_overflow_righe, indice_temp_colonne)){
-						contatore_caselle++;
-					}
-				}
-				else if((indice_temp_righe >= 0) && (indice_temp_colonne < 0)){
-					indice_temp_overflow_colonne = (MAX_COLONNE + indice_temp_colonne);
-					if(1 == lettura(world, indice_temp_righe, indice_temp_overflow_colonne)){
 						contatore_caselle++;
 					}
 				}
@@ -196,7 +152,7 @@ void campo_pre_partita(void)
 	size_t indice_colonne;
 	unsigned int numero_casuale;
 
-	//srand (time(NULL));
+	srand (time(NULL));
 
 	indice_righe = 0;
 	do{

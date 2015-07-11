@@ -152,7 +152,7 @@ void campo_pre_partita(void)
 	size_t indice_colonne;
 	unsigned int numero_casuale;
 
-	srand (time(NULL));
+	//srand (time(NULL)); Numeri non più casuali
 
 	indice_righe = 0;
 	do{
