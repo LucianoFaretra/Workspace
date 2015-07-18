@@ -1,0 +1,28 @@
+#ifndef DATI_GLOBALI_H_
+#define DATI_GLOBALI_H_
+
+#define TARIFFA_AGEVOLATA 0.460468
+#define TARIFFA_BASE 0.604245
+#define TARIFFA_FASCIA_1 0.994113
+#define TARIFFA_FASCIA_2 1.487911
+#define TARIFFA_FASCIA_3 1.825007
+
+#define AGEVOLATA 0
+#define BASE 73.01
+#define FASCIA_1 110.01
+#define FASCIA_2 146.01
+#define FASCIA_3 256
+
+#define QUOTA_FISSA_UNITA 12.55
+#define FOGNA 0.116788
+#define DEPURAZIONE 0.335273
+#define QUOTA_MODULO 12.55
+
+#define LIMITE_MEMORIA_UNITA_ABITATIVE 100
+
+typedef struct{
+	int id;
+	float consumi;
+}abitazione;
+
+#endif /* DATI_GLOBALI_H_ */

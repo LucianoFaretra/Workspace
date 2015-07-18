@@ -1,0 +1,177 @@
+INPUT						DESCRIZIONE											DOMINIO
+giorno						Giorno della data da calcolare						intero
+mese						mese della data da calcolare						intero
+anno						Anno della data da calcolare						intero
+giorni_bisestile			Array contenente i giorni di un anno bisestili		interi
+giorni_non_bisestile		Array contenente i giorni di un anno non bisestili	interi
+MESI						Costante contenente il numero di mesi di un anno	12
+
+
+OUTPUT						DESCRIZIONE
+esito						esito della funzione				intero >= -4
+
+Assegna ad esito il risultato della funzione valida giorno
+Se esito e' diverso da -1
+	Allora
+		Assegna ad esito il risultato della funzione valida mese
+		Se esito e' diverso da -2
+			Allora
+				Assegna ad esito il risultato della funzione valida anno
+				Se esito e' diverso da -3
+					Allora
+						Assegna ad esito il risultato della funzione date_inesistenti
+						Se esito e' diverso da -4
+							Allora
+								Assegna ad esito il risultato della funzione anno_bisestile
+								Se esito e' uguale a 1
+									Allora
+										Assegna ad esito il risultato della funzione conta giorni con calendario non bisestile
+									Altrimenti Se esito e' uguale a 2
+										Allora
+											Assegna ad esito il risultato della funzione conta giorni con calendario bisestile
+									Fine Se
+								Fine Se
+						Fine Se
+				Fine Se
+		Fine Se
+Fine Se
+Ritorna esito alla funzione chiamante
+			
+
+CASI TEST
+
+CASO 1
+
+Giorno 10
+mese 3
+anno 2015
+
+Output 69
+
+CASO 2
+
+Giorno 10
+mese 3
+anno 2000
+
+Output 70
+
+CASO 3
+
+Giorno 1
+mese 1
+anno 2015
+
+Output 1
+
+CASO 4
+
+Giorno 31
+mese 12
+anno 2015
+
+Output 365
+
+CASO 5
+
+Giorno 31
+mese 12
+anno 2000
+
+Output 366
+
+CASO 6
+
+Giorno 29
+mese 2
+anno 2015
+
+Output 0
+
+CASO 7
+
+Giorno 30
+mese 2
+anno 2015
+
+Output -4
+
+CASO 8
+
+Giorno 31
+mese 2
+anno 2015
+
+Output -4
+
+CASO 9
+
+Giorno 31
+mese 4
+anno 2015
+
+Output -4
+
+CASO 10
+
+Giorno 31
+mese 6
+anno 2015
+
+Output -4
+
+CASO 11
+
+Giorno 31
+mese 9
+anno 2015
+
+Output -4
+
+CASO 12
+
+Giorno 31
+mese 11
+anno 2015
+
+Output -4
+
+CASO 13
+
+Giorno 0
+mese 2
+anno 2015
+
+Output -1
+
+CASO 14
+
+Giorno 2
+mese 0
+anno 2015
+
+Output -2
+
+CASO 15
+
+Giorno 2
+mese 13
+anno 2015
+
+Output -2
+
+CASO 16
+
+Giorno 2
+mese 12
+anno -1
+
+Output -3
+
+CASO 17
+
+Giorno 29
+mese 2
+anno 2015
+
+Output 0
