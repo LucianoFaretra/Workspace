@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1452873101 source:/home/ibanez89/UniBa/Workspace/fcamuso C++11/dado/main.cpp
+	<iostream>
+	"classDado.h"
+
+1452872888 source:/home/ibanez89/UniBa/Workspace/fcamuso C++11/dado/classDado.cc
+	"classDado.h"
+	<cstdlib>
+	<ctime>
+
+1452872738 /home/ibanez89/UniBa/Workspace/fcamuso C++11/dado/classDado.h
+	<string>
+
